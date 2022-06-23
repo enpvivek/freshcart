@@ -4,16 +4,17 @@ import { motion } from "framer-motion";
 
 import Logo from "../img/logo.png";
 import Avatar from "../img/avatar.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="fixed w-screen z-50  p-6 px-16">
       {/* for Desktop and Tablet  */}
       <div className="hidden md:flex w-full h-full items-center justify-between">
-        <div className="flex items-center gap-2">
+        <Link to={"/"} className="flex items-center gap-2">
           <img className="w-8 object-cover" src={Logo} alt="logo" />
           <p className="text-headingColor text-xl font-bold">City</p>
-        </div>
+        </Link>
 
         <div className="flex items-center gap-8">
           <ul className="flex ml-auto gap-8 items-center">
@@ -37,7 +38,8 @@ const Header = () => {
               <p className="text-sm text-white font-semibold">2</p>
             </div>
           </div>
-          <motion.img whileTap={{scale: 0.6}}
+          <motion.img
+            whileTap={{ scale: 0.6 }}
             src={Avatar}
             alt="userProfile"
             className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer"
