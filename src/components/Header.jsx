@@ -2,11 +2,22 @@ import React from "react";
 import { MdShoppingCart } from "react-icons/md";
 import { motion } from "framer-motion";
 
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from "../firebase.config";
+
 import Logo from "../img/logo.png";
 import Avatar from "../img/avatar.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+   const firebaseAuth = getAuth(app);
+   const provider = new GoogleAuthProvider();
+
+  const login = async () =>{
+    const response = await signInWithPopup(firebaseAuth, provider);
+    console.log(response);
+  }
+
   return (
     <header className="fixed w-screen z-50  p-6 px-16">
       {/* for Desktop and Tablet  */}
@@ -38,12 +49,16 @@ const Header = () => {
               <p className="text-sm text-white font-semibold">2</p>
             </div>
           </div>
-          <motion.img
-            whileTap={{ scale: 0.6 }}
-            src={Avatar}
-            alt="userProfile"
-            className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer"
-          />
+
+          <div className="relative">
+            <motion.img
+              whileTap={{ scale: 0.6 }}
+              src={Avatar}
+              onClick={login}
+              alt="userProfile"
+              className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer"
+            />
+          </div>
         </div>
       </div>
       {/* for Mobile Users  */}
