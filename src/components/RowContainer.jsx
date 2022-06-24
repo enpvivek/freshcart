@@ -18,7 +18,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
           : "overflow-x-hidden flex-wrap justify-center"
       }`}
     >
-      {data.length > 0 ? (
+      {data && data.length > 0 ? (
         data.map((item) => (
           <div
             key={item.id}
