@@ -8,11 +8,11 @@ import MenuContainer from "./MenuContainer";
 import CartContainer from "./CartContainer";
 
 const MainContainer = () => {
-  const [{ foodItems }, dispatch] = useStateValue();
+  const [{ foodItems, cartShow }, dispatch] = useStateValue();
 
   const [scrollValue, setScrollValue] = useState(0);
 
-  useEffect(() => {}, [scrollValue]);
+  useEffect(() => {}, [scrollValue, cartShow]);
 
   return (
     <div className="w-full h-auto flex flex-col itemd-center justify-center">
@@ -46,11 +46,10 @@ const MainContainer = () => {
           data={foodItems?.filter((n) => n.category === "fruits")}
         />
       </section>
-      
+
       <MenuContainer />
 
-      <CartContainer />
-      
+      {cartShow && <CartContainer />}
     </div>
   );
 };
