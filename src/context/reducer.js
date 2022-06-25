@@ -2,10 +2,11 @@ export const actionType = {
   SET_USER: "SET_USER",
   SET_FOOD_ITEMS: "SET_FOOD_ITEMS",
   SET_CART_SHOW: "SET_CART_SHOW",
+  SET_CARTITEMS: "SET_CARTITEMS",
 };
 
 const reducer = (state, action) => {
-  console.log(action);
+  // console.log(action);
 
   switch (action.type) {
     case actionType.SET_USER:
@@ -26,42 +27,15 @@ const reducer = (state, action) => {
         cartShow: action.cartShow,
       };
 
+    case actionType.SET_CARTITEMS:
+      return {
+        ...state,
+        cartItems: action.cartItems,
+      };
+
     default:
       return state;
   }
 };
 
 export default reducer;
-
-// export const initialState = {
-//   cart: null,
-//   total: null,
-// };
-
-// export const actionType = {
-//   SET_CART: "SET_CART",
-//   SET_TOTAL: "SET_TOTAL",
-// };
-
-// const reducer = (state, action) => {
-//   console.log(action);
-
-//   switch (action.type) {
-//     case actionType.SET_CART:
-//       return {
-//         ...state,
-//         cart: action.cart,
-//       };
-
-//     case actionType.SET_TOTAL:
-//       return {
-//         ...state,
-//         total: action.total,
-//       };
-
-//     default:
-//       return state;
-//   }
-// };
-
-// export default reducer;

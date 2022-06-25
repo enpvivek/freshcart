@@ -16,7 +16,7 @@ const Header = () => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
-  const [{ user, cartShow }, dispatch] = useStateValue();
+  const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
 
   const [isMenu, setIsMenu] = useState(false);
 
@@ -101,9 +101,13 @@ const Header = () => {
               className="text-textColor text-2xl cursor-pointer"
               onClick={() => setIsMenu(false)}
             />
-            <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-cartNumBg flex items-center justify-center">
-              <p className="text-sm text-white font-semibold">2</p>
-            </div>
+            {cartItems && cartItems.length > 0 && (
+              <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-cartNumBg flex items-center justify-center">
+                <p className="text-sm text-white font-semibold">
+                  {cartItems.length}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="relative">
@@ -154,14 +158,16 @@ const Header = () => {
             className="text-textColor text-2xl cursor-pointer"
             onClick={() => setIsMenu(false)}
           />
-          <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-cartNumBg flex items-center justify-center">
-            <p
-              className="text-sm text-white font-semibold"
-              onClick={() => setIsMenu(false)}
-            >
-              2
-            </p>
-          </div>
+          {cartItems && cartItems.length > 0 && (
+            <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-cartNumBg flex items-center justify-center">
+              <p
+                className="text-sm text-white font-semibold"
+                onClick={() => setIsMenu(false)}
+              >
+                {cartItems.length}
+              </p>
+            </div>
+          )}
         </div>
 
         <Link to={"/"} className="flex items-center gap-2">
